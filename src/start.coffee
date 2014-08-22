@@ -18,5 +18,9 @@ start = (ENV, done) ->
   ], done
 
 
-# export start
-module.exports = start
+# run or export module
+if require.main is module
+  argv = require('minimist') process.argv.slice(2)
+  start(argv._[0] ? 'dev')
+else
+  module.exports = start
