@@ -18,10 +18,7 @@ environments =
       port: 3000
 
     logging:
-      streams: [
-        stream: process.stderr, level: 'error'
-        stream: process.stdout, level: 'info'
-      ]
+      streams: []
 
   # Production
   prod:
