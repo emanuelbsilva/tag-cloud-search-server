@@ -2,6 +2,8 @@ requestLogger = require './requestLogger'
 express = require 'express'
 http = require 'http'
 
+ddgSearch = require './duckDuckGo'
+
 server = (config, log) ->
   app = express()
 
@@ -11,9 +13,11 @@ server = (config, log) ->
   # Root endpoint
   app.get '/', (req, res) -> res.status(200).end()
 
-  # Description endpoint
-  app.get '/description/:query', (req, res) ->
-    
+  # Search endpoint
+  app.get '/words/:query', (req, res) ->
+    ddgSearch req.params.query, (err, words) ->
+      if err? then return res.send(500)
+      res.send words: words
 
   # Override listen
   app.listen = -> (done) =>
