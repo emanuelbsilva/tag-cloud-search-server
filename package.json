@@ -1,10 +1,11 @@
 {
   "name": "tag-cloud-search",
-  "version": "0.0.0",
+  "version": "0.0.0-1",
   "description": "",
   "main": "src/start.coffee",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "start": "coffee src/start.coffee prod"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +21,9 @@
     "mocha": "^1.21.4",
     "chai": "^1.9.1",
     "chai-http": "^0.4.0"
+  },
+  "subdomain": "tag-cloud-search",
+  "engines": {
+    "node": "0.10.x"
   }
 }
