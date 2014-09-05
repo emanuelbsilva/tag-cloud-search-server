@@ -5,7 +5,8 @@ describe 'wordCounter', ->
 
   it 'should count words on text', ->
     results = 'aa': 1, 'a': 2, 'b': 1
-    
-    tokens = wordCounter('aa a b a')
+
+    tokens = wordCounter('aa a b a', 10)
+
     for token in tokens
-      expect(token.size).to.equal results[token]
+      expect(token.size).to.equal results[token.text]
