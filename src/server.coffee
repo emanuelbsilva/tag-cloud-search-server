@@ -3,6 +3,7 @@ express = require 'express'
 http = require 'http'
 
 ddgSearch = require './duckDuckGo'
+googleSearch = require './google'
 
 server = (config, log) ->
   app = express()
@@ -15,7 +16,7 @@ server = (config, log) ->
 
   # Search endpoint
   app.get '/words/:query', (req, res) ->
-    ddgSearch req.params.query, (err, words) ->
+    googleSearch req.params.query, (err, words) ->
       if err? then return res.send(500)
       res.send words: words
 
