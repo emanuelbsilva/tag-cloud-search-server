@@ -37,4 +37,4 @@ describe 'server', ->
       expect(res).to.be.json
 
     it 'should have words property', ->
-      expect(res.body).to.have.property 'words'
+      expect(res.body).to.be.an 'object'

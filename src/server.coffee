@@ -2,6 +2,8 @@ requestLogger = require './requestLogger'
 express = require 'express'
 http = require 'http'
 
+wordCounter = require './wordCounter'
+
 ddgSearch = require './duckDuckGo'
 googleSearch = require './google'
 
@@ -18,7 +20,7 @@ server = (config, log) ->
   app.get '/words/:query', (req, res) ->
     googleSearch req.params.query, (err, words) ->
       if err? then return res.send(500)
-      res.send words: words
+      res.send wordCounter(words)
 
   # Override listen
   app.listen = -> (done) =>
