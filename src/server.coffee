@@ -18,9 +18,10 @@ server = (config, log) ->
 
   # Search endpoint
   app.get '/words/:query', (req, res) ->
+    maxResults = parseInt(req.query.maxResults) ? 100
     googleSearch req.params.query, (err, words) ->
       if err? then return res.send(500)
-      res.send wordCounter(words)
+      res.send wordCounter(words, maxResults)
 
   # Override listen
   app.listen = -> (done) =>

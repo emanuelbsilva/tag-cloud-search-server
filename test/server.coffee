@@ -26,7 +26,7 @@ describe 'server', ->
     res = null
 
     before (done) ->
-      server.get('/words/opensource').res (response) ->
+      server.get('/words/opensource?maxResults=44').res (response) ->
         res = response
         done()
 
@@ -37,4 +37,7 @@ describe 'server', ->
       expect(res).to.be.json
 
     it 'should have words property', ->
-      expect(res.body).to.be.an 'object'
+      expect(res.body).to.be.an 'array'
+
+    it 'should return 44 words', ->
+      expect(res.body).to.be.have.length 44
